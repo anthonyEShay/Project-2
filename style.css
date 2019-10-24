@@ -38,7 +38,6 @@ width:100%;
 text-align:left;
 color:#FFFFFF;
 font-size:43px;
-color:#FFF;	
 left:14px;
 top:18px;
     width:100px;
@@ -51,19 +50,9 @@ top:18px;
 position:relative;
 text-align:right;
 color:#A9D1FA;
-    width: 200px
+    width: 400px;
 float: right;
 }
-
-#mainpic
-{
-background-image:url(images/main.jpg);
-background-repeat:no-repeat;
-width:900px;
-height:354px;	
-}
-
-
 
 .off
 {
@@ -78,8 +67,6 @@ float:left;
 clear:both;
 width:90%;
 height:54px;
-float:left;
-clear:both;
 }
 
 #leftmenu
@@ -173,7 +160,7 @@ display:block;
 float:left;
 width:calc(100% - 250px);
 height:auto;
-    display: inline-block;
+	display: inline-block;
 padding-left:10px;
 padding-top:15px;
 padding-right:10px;
@@ -183,8 +170,8 @@ padding-bottom:5px;
 
 #content_top
 {
-	background-image:url(images/main_top.png);
-	background-repeat:no-repeat;
+	/*background-image:url(images/main_top.png);
+	background-repeat:no-repeat;*/
 	width:100%;
 	height:25px;
 }
@@ -207,8 +194,8 @@ padding-right:15px;
 
 #content_bottom
 {
-background-image:url(images/main_bottom.png);
-background-repeat:no-repeat;
+/*background-image:url(images/main_bottom.png);
+background-repeat:no-repeat;*/
 width:100%;
 height:25px;
 }
