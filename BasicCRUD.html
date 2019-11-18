@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Project 2</title>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <h1>Group&nbsp;<span class="off">5</span></h1>
+        <h2>Understanding Graph Databases in Web Systems Using Neo4j</h2>
+    </div>
+
+    <div id="menu">
+        <ul>
+            <li class="menuitem"><a href="index.html">Home</a></li>
+            <li class="menuitem"><a href="aboutGroup.html">About Group 5</a></li>
+            <li class="menuitem"><a href="bibliography.html">Annotated Bibliography</a></li>
+        </ul>
+    </div>
+
+    <div id="leftmenu">
+
+        <div id="leftmenu_top"></div>
+
+        <div id="leftmenu_main">
+
+            <h3>Links</h3>
+
+            <ul>
+                <li><a href="whatAreGDb.html">What are Graph Databases?</a></li>
+                <li><a href="howNeoWork.html">How Neo4j Works</a></li>
+                <li><a href="installNeo.html">Installing and setting up Neo4j</a></li>
+                <li><a href="BasicCRUD.html">Using CQL to complete Basic CRUD</a></li>
+                <li><a href="AdvancedFeature.html">Advanced Neo4j features</a></li>
+                <li><a href="#">Integrating a Neo4j database</a></li>
+                <li><a href="webAppWalk.html">Creating a simple web application</a></li>
+                <li><a href="industryToday.html">Neo4j in the industry today</a></li>
+                <li><a href="#">The Future of Graph Databases</a></li>
+                <li><a href="conclusions.html">Conclusions</a></li>
+            </ul>
+        </div>
+
+
+        <div id="leftmenu_bottom"></div>
+    </div>
+
+
+
+
+    <div id="content">
+
+
+        <div id="content_main">
+            <h1>Neo4j CQL - CREATE</h1>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>
+            <h2>1. Neo4j CQL - Create Node without Properties</h2>
+            <p>&nbsp;</p>
+            <p>The Neo4j CQL "CREATE" command is used to create nodes without properties. It just creates a node without any data.<p>&nbsp;</p>
+            <p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (node-name:label-name)</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example demonstrates how to create a simple "employee" node Follow these steps: <p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p>
+            <img src="images/create0.png" width="600" height="300"><p>&nbsp;</p>
+            <p>Step 2 - type the following command at the dollar prompt in the browser.</p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (emp:Employee)</pre></h4><p><p>&nbsp;</p>
+            <p><p>Here, emp is a node name and Employee is the label name of emp node.</p><p><p>&nbsp;</p>
+            <img src="images/create1.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <p>Step 3 - click the execute button and see the success message in the browser.</p><p>&nbsp;</p>
+            <img src="images/create2.png" width="600" height="300"><p>&nbsp;</p>
+            <p>The browser shows a label and a node created in the Neo4j database. A node "emp" with the label name "employee".</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h2>2. Neo4j CQL - Create Node with Properties</h2><p>&nbsp;</p>
+            <p>The Neo4j CQL "CREATE" command is used to create nodes with properties. It creates a node with some  properties (key-value pairs) to store the data.</p>
+            <p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (node-name:label-name {Property1-name:Property1-Value........ PropertyN-name:PropertyN-Value})</pre></h4><p><p>&nbsp;</p></pre>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example demonstrates how to create an employee node with some properties (ID, name, Sal, deptno) Follow the steps below-
+            </p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the following command at the dollar prompt in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (emp:Employee{id:123,name:"Alice",sal:50000,deptno:10})</pre></h4><p><p>&nbsp;</p>
+            <p><p>Here, emp is a node name and Employee is the label name of dept node.</p><p><p>&nbsp;</p>
+            <img src="images/create3.png" width="600" height="300"><p>&nbsp;</p>
+            <p>Step 3 - click the execute button and see the success message in the browser.</p><p>&nbsp;</p>
+            <img src="images/create4.png" width="600" height="300"><p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>Observe success message: added 1 label, created 1 node, set 4 properties, returned 0 lines.<p>&nbsp;</p>
+            <p>This command has created a node "emp" with 4 properties ("id", "name", "sal", "deptno") and allocated a label "employee".</p><p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h2>Verification</h2><p>&nbsp;</p>
+            <p> To verify the creation of the node, type the following command at the dollar prompt in the browser</p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n) RETURN n </pre></h4><p><p>&nbsp;</p>
+            <p>This query returns all the nodes in the database. Then click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/create5.png" width="600" height="400"><p>&nbsp;</p>
+            <h2>3. Neo4j CQL - Returning the Created Node</h2><p>&nbsp;</p>
+            <p>In Neo4j CQL, we can't use the MATCH or RETURN commands by oneself. Therefore, we should combine these two commands to retrieve data from the database.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE(node-name:label-name){properties. . . . }) RETURN node-name</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>Following is a sample Cypher Query which creates a node with properties and returns it.</p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the following command at the dollar prompt in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Dhawan:player{name: "Shikar Dhawan", YOB: 1985, POB: "Delhi"}) RETURN Dhawan </pre></h4><p><p>&nbsp;</p>
+            <img src="images/create6.png" width="600" height="300"><p>&nbsp;</p>
+            <p>Step 3 - click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/create7.png" width="600" height="400"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+
+            <h1>Neo4j CQL - RELATIONSHIP</h1><p>&nbsp;</p>
+            <p>Neo4j graph database follows the attribute graph model to store and manage its data. According to the property graph model, the relationship should be oriented. Otherwise, Neo4j will get an error message. Neo4j relationship is divided into two main types based on directionality: one-way relationship and two-way relationship. In the following scenario, we can use Neo4j CQL CREATE clause to create a relationship between two nodes.</p><p>&nbsp;</p>
+            <h2>1. Create relationships</h2><p>&nbsp;</p>
+            <p>In this case, Neo4j database does not have these two nodes. We use the CQL CREATE clause to create two end nodes at once and create new relationship between them.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (node1)-[:RelationshipType]->(node2)</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>Following is the syntax to create a relationship using the CREATE clause.</p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Create two nodes in the database, then create the relationship of two nodes.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"}) CREATE (Uni:Country {name: "United States"})</pre></h4><p><p>&nbsp;</p>
+            <p>Then, create a relationship named REPORTER_OF between these two nodes as</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Bob)-[r:REPORTER_OF]->(Uni)
+                RETURN Bob, Uni</pre><p><p>&nbsp;</p></h4>
+            <img src="images/relation0.png" width="600" height="350"><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/relation1.png" width="600" height="450"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>2. Creating a Relationship Between the Existing Nodes</h2><p>&nbsp;</p>
+            <p>In this case, Neo4j database does not have these two nodes. We use the CQL CREATE clause to create two end nodes at once and create new relationship between them.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (a:LabeofNode1), (b:LabeofNode2)
+                WHERE a.name = "nameofnode1" AND b.name = " nameofnode2"
+                CREATE (a)-[: Relation]->(b)
+                RETURN a,b </pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>Following is the method to create a relationship using the MATCH clause.</p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 -  Make sure we use two existing nodes: reporter and country.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})
+                CREATE (Uni:Country {name: "United States"})</pre></h4><p><p>&nbsp;</p>
+            <img src="images/relation2.png" width="600" height="350"><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (a:reporter), (b:Country) WHERE a.name = "Bob Wilson" AND b.name = "United States"
+                CREATE (a)-[r: REPORTER_OF]->(b)
+                RETURN a,b
+            </pre></h4><p><p>&nbsp;</p>
+            <img src="images/relation3.png" width="600" height="400"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>3. Creating a Complete Path</h2><p>&nbsp;</p>
+            <p>Use continuous relationships to form paths in Neo4j. We can use the create clause to create a path.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE p = (Node1 {properties})-[:Relationship_Type]->
+                (Node2 {properties})[:Relationship_Type]->(Node3 {properties})
+                RETURN p  </pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>Following is the method to create a path using the CREATE clause.</p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 -  Creates three nodes and two relationships in one go, assigns it to a path variable, and returns it.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE p = (Bob {name:"Bob Wilson"})-[:TOPSCORRER_OF]->
+                (Uni {name:"United States"})-[:WINNER_OF]->(WCS2019 {name:"Champions Trophy 2019"})
+                RETURN p</pre></h4><p><p>&nbsp;</p>
+            <img src="images/relation4.png" width="600" height="350"><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            </pre></h4><p><p>&nbsp;</p>
+            <img src="images/relation5.png" width="600" height="450"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+
+            <h1>Neo4j CQL - MATCH</h1><p>&nbsp;</p>
+            <p>By using this MATCH clause,  We can obtain data about nodes, relationships, and properties from database.</p><p>&nbsp;</p>
+            <h2>1. Get All Nodes Using MATCH</h2><p>&nbsp;</p>
+            <p>All nodes in the database can be retrieved by using the MATCH clause of Neo4j.</p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p>
+            <p>Step 2 - Create 5 nodes and 4 relationships before proceeding with the example.</p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+            CREATE (Dhoni:player {name: "Bob Dhoni", YOB: 1989, POB: "Ranchi"})
+            CREATE (Ind:Country {name: "United States", result: "Winners"})
+            CREATE (CT2019:Tornament {name: "ICC Champions Trophy 2019"})
+            CREATE (Ind)-[r1:WINNERS_OF {NRR:0.938 ,pts:6}]->(CT2019)
+            CREATE(Dhoni)-[r2:CAPTAIN_OF]->(Ind)
+            CREATE (Dhawan:player{name: "David Dhawan", YOB: 1990, POB: "Delhi"})
+            CREATE (Jadeja:player {name: "Alice Jadeja", YOB: 1988, POB: "NavagamGhed"})
+            CREATE (Dhawan)-[:TOP_SCORER_OF {Runs:363}]->(Ind)
+            CREATE (Jadeja)-[:HIGHEST_WICKET_TAKER_OF {Wickets:12}]->(Ind)</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/match0.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n) RETURN n</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/match1.png" width="600" height="400"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>2. Getting All Nodes Under a Specific Label</h2><p>&nbsp;</p>
+            <p>By using this MATCH clause,  We can obtain all the nodes under a specific label.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (node:label)
+                RETURN node</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to getting all nodes under a specific label from database.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Returns all the nodes in the database under the label player.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:player)
+                RETURN n</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/match2.png" width="600" height="450"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>3. Match by Relationship</h2><p>&nbsp;</p>
+            <p>By using this MATCH clause,  We can retrieve nodes based on relationship.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (node:label)<-[: Relationship]-(n)
+                RETURN n </pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to retrieving nodes based on the relationship using the MATCH clause.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Retrieve nodes based on relationship.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (Ind:Country {name: "United States", result: "Winners"})<-[: TOP_SCORER_OF]-(n)
+                RETURN n.name</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/match3.png" width="600" height="350"><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+
+
+            <h1>Neo4j CQL - DELETE</h1><p>&nbsp;</p>
+            <p>By using this DELETE clause, we can permanently delete the node and its associated properties from the database.</p><p>&nbsp;</p>
+            <h2>1. Deleting all Nodes</h2><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n) DETACH DELETE n</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to permanently delete all nodes from database.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Use the following code to delete all nodes.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n) DETACH DELETE n</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <img src="images/delete0.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>2. Deleting a specific Node</h2><p>&nbsp;</p>
+            <p>To delete a node, we need to replace the details of the specified node with "n" in the above query.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (node:label {properties . . . . . . . . . .  })
+                DETACH DELETE node</pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to permanently delete one specific node from database.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Create a node "Bob" in the Neo4j database before proceeding with the example.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/delete1.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the following result in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})
+                DETACH DELETE Bob</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/delete2.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>Verification</h2><p>&nbsp;</p>
+            <p>Now, check the delete operation completed successfully.</p><p>&nbsp;</p>
+            <p>Step 1 - Match the deleted node.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})
+                RETURN Bob</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 3 - Type the command at the dollar prompt in the browser.Click the execute button and get the no records in the browser.</p><p>&nbsp;</p>
+            <img src="images/delete3.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+
+            <h1>Neo4j CQL - REMOVE</h1><p>&nbsp;</p>
+            <p>By using this clause, we can deletes the label and property of a node or relationship.</p><p>&nbsp;</p>
+            <h2>1. Removing a Property</h2><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (node:label{properties . . . . . . . })
+                REMOVE node.property
+                RETURN node </pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to remove the created nodes from database.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Create a node "Bob" in the Neo4j database before proceeding with the example.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/delete1.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            Step 3 - Type the command at the dollar prompt in the browser.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})
+                REMOVE Bob.POB
+                RETURN Bob</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/remove0.png" width="600" height="400"><p>&nbsp;</p>
+            <p>On executing, we can observe that the node named POB was removed.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <h2>2. Removing a Label From a Node</h2><p>&nbsp;</p>
+            <p>We can use the MATCH and REMOVE clauses to remove the properties of a node.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (node:label {properties . . . . . . . . . . . })
+                REMOVE node:label
+                RETURN node  </pre></h4><p><p>&nbsp;</p>
+            <h3>For example:</h3><p>&nbsp;</p>
+            <p>This example shows how to remove a label from an existing node using the REMOVE clause.</p><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j data browser.</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Remove the created nodes from database</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (Bob:reporter{name: "Bob Wilson", YOB: 1990, POB: "Hayward"})
+                REMOVE Bob.reporter
+                RETURN Bob</pre></h4><p><p>&nbsp;</p><p>&nbsp;</p>
+            <img src="images/remove1.png" width="600" height="400"><p>&nbsp;</p>
+            <p>On executing, we can observe that the node label was removed.</p><p>&nbsp;</p><p>&nbsp;</p>
+                <p>&nbsp;</p>
+            <!--<div style="align-self: center; width: 85%; background-color: #A9D1FA"><br></div>-->
+            <h2 style="text-align: left; float: left; margin-left:10%;"><a href="installNeo.html" style="color:#1e437a; text-decoration:none;">Previous</a></h2>
+            <h2 style="text-align: right; float: right; margin-right:15%;"><a href="AdvancedFeature.html" style="color:#1e437a; text-decoration:none;">Next</a></h2>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+
+        <div id="footer"><h3><a href="aboutGroup.html">&#169;Group 5</a></h3></div>
+    </div>
+</div>
+</body>
+</html>

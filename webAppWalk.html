@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>Project 2</title>
+</head>
+
+<body>
+<div id="container">
+		<div id="header">
+        	<h1>Group&nbsp;<span class="off">5</span></h1>
+            <h2>Understanding Graph Databases in Web Systems Using Neo4j</h2>
+        </div>   
+        
+        <div id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="index.html">Home</a></li>
+                <li class="menuitem"><a href="aboutGroup.html">About Group 5</a></li>
+                <li class="menuitem"><a href="bibliography.html">Annotated Bibliography</a></li>
+            </ul>
+        </div>
+        
+        <div id="leftmenu">
+
+            <div id="leftmenu_top"></div>
+
+				<div id="leftmenu_main">    
+                
+                <h3>Links</h3>
+                        
+                <ul>
+                    <li><a href="whatAreGDb.html">What are Graph Databases and Neo4j?</a></li>
+                    <li><a href="howNeoWork.html">How Neo4j Works</a></li>
+                    <li><a href="installNeo.html">Installing and setting up Neo4j</a></li>
+                    <li><a href="BasicCRUD.html">Using CQL to complete Basic CRUD</a></li>
+                    <li><a href="AdvancedFeature.html">Advanced Neo4j features</a></li>
+                    <li><a href="#">Integrating a Neo4j database</a></li>
+                    <li><a href="webAppWalk.html">Creating a simple web application</a></li>
+                    <li><a href="industryToday.html">Neo4j in the industry today</a></li>
+                    <li><a href="#">The Future of Graph Databases</a></li>
+                    <li><a href="conclusions.html">Conclusions</a></li>
+                </ul>
+                </div>
+                
+                
+              <div id="leftmenu_bottom"></div>
+        </div>
+        
+        
+        
+        
+		<div id="content">
+        
+            
+        <div id="content_main">
+            <h1 style="text-align: center">Creating A Simple Web Application</h1>
+            <h2 style="text-align: center">With Heroku and Neo4j</h2>
+        	<p>&nbsp;</p>
+           	<p>&nbsp;</p>
+       	  <h2>Before Beginning</h2>
+        	<p>Creating a website or web application and connecting it to a database is not a trivial task so in order to complete this tutorial state we expect that you have completed the previous stages giving you and introduction to Neo4j calls and commands. To complete the application you will also need a basic understating of HTML, CSS, Node.js and the Heroku hosting platform. In order to complete this stage you will also have needed to complete the Heroku getting started tutorial. That tutorial can be found <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">here</a>.</p>
+        	<p>&nbsp;</p>
+            <h2>Setting up GrapheneDB</h2>
+        	<p>To create our application we will be using Heroku as our web based cloud platform provider. Heroku is easy to use, has a generous free tier, and easily integrates with many powerful data services that allow deployed applications to run with modern software suite products like Neo4j. Everything we will be doing in this tutorial stage can be done with Heroku’s free tiers. Our tutorial will begin where the Heroku getting started tutorial left off.</p>
+        	<p>&nbsp;</p>
+            <h3>1.</h3>
+            <p>Adding GrapheneDB to your application is easy with Heroku. First make sure you are in the Heroku app counsole and are in the tutorial application you have just created. We will first need to click on Configure Add-ons and then Find more add-ons in order to add GrapheneDB.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp1.jpg" style="width: 100%">
+            <img src="images/webApp2.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <h3>2.</h3>
+            <p>Once on the Add-ons screen search for GrapheneDB or Neo4j in the search Elements box. Click on the GrapheneDB add-on in order to be brought to its add-on screen.  Next click on the Install GrapheneDB button and then Provision add-on. This will then install GrapheneDB for your application.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp3.jpg" style="width: 100%">
+            <img src="images/webApp4.jpg" style="width: 100%">
+            <img src="images/webApp5.jpg" style="width: 100%">
+            <img src="images/webApp6.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h2>Using Neo4j with GrapheneDB</h2>
+            <p>&nbsp;</p>
+            <h3>1.</h3>
+            <p>You should now see that GrapheneDB is one of your Installed add-ons when you navigate back to your Heroku Application overview screen. To begin using Neo4j with GrapheneDB we need to click on the GrapheneDB add-on.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp7.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <h3>2.</h3>
+            <p>You should now be brought to your applications GrapheneDB main portal page. This page contains lots of information like how much is being stored, what version we are using, and what server we are using. For the free version you should also see that we are limited in the number of nodes and relationships we can have. We will not need anywhere near this amount of nodes for our tutorial. To launch the Neo4j Browser click on the Launch button.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp8.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <h3>3.</h3>
+            <p>This screen should look familiar because it is the standard Neo4j application screen. You can now add and edit your database data like you’ve done for the previous stages in this tutorial. In order to just show how to use this screen we will be keeping it simple. In the editor command box input the following statement:<br>
+                CREATE (ee:Person { name: "Emil", from: "Sweden", klout: 99 })<br>
+                CREATE (js:Person { name: "Johan", from: "Sweden", learn: "surfing" }),<br>
+                (ir:Person { name: "Ian", from: "England", title: "author" }),<br>
+                (rvb:Person { name: "Rik", from: "Belgium", pet: "Orval" }),<br>
+                (ally:Person { name: "Allison", from: "California", hobby: "surfing" }),<br>
+                (ee)-[:KNOWS {since: 2001}]->(js),(ee)-[:KNOWS {rating: 5}]->(ir),<br>
+                (js)-[:KNOWS]->(ir),(js)-[:KNOWS]->(rvb),<br>
+                (ir)-[:KNOWS]->(js),(ir)-[:KNOWS]->(ally),<br>
+                (rvb)-[:KNOWS]→(ally)</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp9.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <h3>4.</h3>
+            <p>Now if we open up the database Information tab and click on our nodes we will see all of the nodes we just created in our Heroku Neo4j database. We have now successfully used Neo4j with the GrapheneDB add-on.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp10.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <h2>Accessing Neo4j DB Through Your Web App</h2>
+            <p>&nbsp;</p>
+            <h3>1.</h3>
+            <p>Next we will access our database through our web application and not the built in Neo4j browser. To do this we will first need to install the neo4j-driver via npm. To do this run this command: <br>$ npm install neo4j-driver. <br>Simply run this command via the command line while in your project file.</p>
+            <p>&nbsp;</p>
+            <h3>2.</h3>
+            <p>Next we will need to update our index file with the appropriate code. We will first need to connect to the Neo4j instance using Heroku’s environment variables. Paste this code into your index file.js file.<br><br>
+                var neo4j = require('neo4j-driver').v1;<br>
+                var graphenedbURL = process.env.GRAPHENEDB_BOLT_URL;<br>
+                var graphenedbUser = process.env.GRAPHENEDB_BOLT_USER;<br>
+                var graphenedbPass = process.env.GRAPHENEDB_BOLT_PASSWORD;<br>
+                var driver = neo4j.driver(graphenedbURL, neo4j.auth.basic(graphenedbUser, graphenedbPass));</p>
+            <p>&nbsp;</p>
+            <h3>3.</h3>
+            <p>Finally it’s time to test our connection by creating a single test node. To do this paste in this code underneath step 2’s code.<br><br>
+var session = driver.session();<br>
+session<br>
+    .run("CREATE (n {hello: 'World'}) RETURN n.name")<br>
+    .then(function(result) {<br>
+        result.records.forEach(function(record) {<br>
+            console.log(record)<br>
+        });<br>
+<br>
+        session.close();<br>
+    })<br>
+    .catch(function(error) {<br>
+        console.log(error);<br>
+    });</p>
+            <p>&nbsp;</p>
+            <h3>4.</h3>
+            <p>Now that all the code is in your index file use git to add, commit, and push to the Heroku Server. Once that is done open up your app and then go back to the Neo4j built in browser to see if your code actually was able to input a new node. As you can see from the picture below the Neo4j database now has the new test node we have created. It has been given an id of 61 and has the property hello:World. Now that we have successfully accessed our Neo4j DB through our application files we can build anything. We can input code to create more nodes, find matches, and so on.</p>
+            <p>&nbsp;</p>
+            <img src="images/webApp11.jpg" style="width: 100%">
+            <p>&nbsp;</p>
+            <!--<div style="align-self: center; width: 85%; background-color: #A9D1FA"><br></div>-->
+            <h2 style="text-align: left; float: left; margin-left:10%;"><a href="#" style="color:#1e437a; text-decoration:none;">Previous</a></h2>
+            <h2 style="text-align: right; float: right; margin-right:15%;"><a href="industryToday.html" style="color:#1e437a; text-decoration:none;">Next</a></h2>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+            
+            <div id="footer"><h3><a href="aboutGroup.html">&#169;Group 5</a></h3></div>
+      </div>
+   </div>
+</body>
+</html>

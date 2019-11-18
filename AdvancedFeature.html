@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Project 2</title>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <h1>Group&nbsp;<span class="off">5</span></h1>
+        <h2>Understanding Graph Databases in Web Systems Using Neo4j</h2>
+    </div>
+
+    <div id="menu">
+        <ul>
+            <li class="menuitem"><a href="index.html">Home</a></li>
+            <li class="menuitem"><a href="aboutGroup.html">About Group 5</a></li>
+            <li class="menuitem"><a href="bibliography.html">Annotated Bibliography</a></li>
+        </ul>
+    </div>
+
+    <div id="leftmenu">
+
+        <div id="leftmenu_top"></div>
+
+        <div id="leftmenu_main">
+
+            <h3>Links</h3>
+
+            <ul>
+                <li><a href="whatAreGDb.html">What are Graph Databases and Neo4j?</a></li>
+                    <li><a href="howNeoWork.html">How Neo4j Works</a></li>
+                    <li><a href="installNeo.html">Installing and setting up Neo4j</a></li>
+                    <li><a href="BasicCRUD.html">Using CQL to complete Basic CRUD</a></li>
+                    <li><a href="AdvancedFeature.html">Advanced Neo4j features</a></li>
+                    <li><a href="#">Integrating a Neo4j database</a></li>
+                    <li><a href="webAppWalk.html">Creating a simple web application</a></li>
+                    <li><a href="industryToday.html">Neo4j in the industry today</a></li>
+                    <li><a href="#">The Future of Graph Databases</a></li>
+                    <li><a href="conclusions.html">Conclusions</a></li>
+            </ul>
+        </div>
+
+
+        <div id="leftmenu_bottom"></div>
+    </div>
+
+
+
+
+    <div id="content">
+
+
+        <div id="content_main">
+            <h1>Neo4j Advanced Features</h1><p>&nbsp;</p><p>&nbsp;</p>
+            <p><h2>1. Neo4j - Aggregation Function</h2><p>&nbsp;</p>
+            <p>Cypher aggregation is different from other languages. For example, aggregation is implemented by group by in SQL. In cypher, the aggregation function is used by default.</p><p>&nbsp;</p>
+            <h3>1.1 COUNT:</h3><p>&nbsp;</p>
+            <p>It returns the number of rows.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                COUNT(value) </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p>
+            <p>Create 4 nodes in Neo4j database.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Alice:employee{name: "Alice", sal: 110000, City: "Fremont"})
+                CREATE (Bob:employee{name: "Bob", sal: 150000, City: "Sunnyvale"})
+                CREATE (Chole:employee{name: "Chole", sal: 130000, City: "Cupertino"})
+                CREATE (David:employee{name: "David", sal: 135000, City: "Hayward"})</pre></h4><p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p>
+            <h4><pre class="result notranslate">
+                MATCH (n:employee)
+                WHERE n.sal>120000
+                RETURN COUNT(n)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Count the employees whose salary is greater than 120000.</p><p>&nbsp;</p>
+            <img src="images/aggregation0.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>1.2 MAX:</h3><p>&nbsp;</p>
+            <p>It returns the maximum value from a set of rows.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MAX(property-name) </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:employee) RETURN MAX(n.sal)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the maximum salaries of the employees.</p><p>&nbsp;</p>
+            <img src="images/aggregation1.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>1.3 MIN:</h3><p>&nbsp;</p>
+            <p>It returns the minimum value from a set of rows.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MIN(property-name) </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:employee) RETURN MIN(n.sal)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the minimum salaries of the employees.</p><p>&nbsp;</p>
+            <img src="images/aggregation2.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>1.4 SUM:</h3><p>&nbsp;</p>
+            <p>It returns the summation value from a set of rows.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                SUM(property-name) </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:employee) RETURN SUM(n.sal)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the summation salaries of the employees.</p><p>&nbsp;</p>
+            <img src="images/aggregation3.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>1.5 AVG:</h3><p>&nbsp;</p>
+            <p>It returns the average value from a set of rows.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                AVG(property-name) </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:employee) RETURN AVG(n.sal)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the average salaries of the employees.</p><p>&nbsp;</p>
+            <img src="images/aggregation4.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <p><h2>2. Neo4j - String Function</h2><p>&nbsp;</p>
+            <p>Like SQL, Neo4j CQL provides a set of string functions to get the required results in CQL Queries.</p><p>&nbsp;</p>
+            <h3>2.1 UPPER:</h3><p>&nbsp;</p>
+            <p>It is used to change all letters into upper case letters.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                UPPER (input-string)  </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Create 5 nodes in Neo4j database.</p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                CREATE (Alice:player{name: "Alice Brown", YOB: 1995, POB: "Cupertino"})
+                CREATE (Bob:player {name: "Bob Wilson", YOB: 1991, POB: "Fremont"})
+                CREATE (Chole:player {name: "Chole Smith", YOB: 1997, POB: "Hayward"})
+                CREATE (David:player {name: "David Hilton", YOB: 1994, POB: "Sunnyvale"})
+                CREATE (Eva:player {name: "Eva Jones", YOB: 1992, POB: "Pleasanton"})</pre></h4><p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:player)
+                RETURN UPPER(n.name), n.YOB, n.POB </pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the result, converted the names of all the players into upper case.</p><p>&nbsp;</p>
+            <img src="images/aggregation5.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>2.2 LOWER:</h3><p>&nbsp;</p>
+            <p>It is used to change all letters into lower case letters.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                LOWER (input-string)  </pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:player)
+                RETURN LOWER(n.name), n.YOB, n.POB </pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the result, converted the names of all the players into lower case.</p><p>&nbsp;</p>
+            <img src="images/aggregation6.png" width="600" height="300">
+            <p>&nbsp;</p>
+            <h3>2.3 SUBSTRING:</h3><p>&nbsp;</p>
+            <p>It is used to get substring of a given String.</p><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                SUBSTRING(input-string, startIndex, endIndex)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                MATCH (n:player)
+                RETURN SUBSTRING(n.name,0,5), n.YOB, n.POB </pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the substring of the names of all the players.</p><p>&nbsp;</p>
+            <img src="images/aggregation7.png" width="600" height="300">
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+            <p><h2>3. Neo4j - Spatial Function</h2><p>&nbsp;</p>
+            <h3>3.1 Neo4j Spatial Concept:</h3><p>&nbsp;</p>
+            <p>The spatial project is a plug-in of the graph database Neo4j. It maps spatial data to the graph model and stores objects and relationships as vertices and edges in the graph model. Therefore, Neo4j has the functions of spatial data import, storage and query. The geographical elements supported by Neo4j spatial follow the specifications of OpenGIS, including simple elements such as point, line-string, polygon, multipoint, and multi-line string. Neo4j spatial mainly integrates Lucene's index library by using R-tree as spatial index. Supported spatial queries include cover, cover by, contain, intersect, etc..</p>
+            <p>To sum up, Neo4j has great advantages in the analysis of graph data model, such as proximity search, path analysis and other specific types of applications.</p><p>&nbsp;</p>
+            <h3>3.2 Neo4j Spatial- Distance</h3><p>&nbsp;</p>
+            <p>It returns a floating point number representing the geodesic distance between two points in the same Coordinate Reference System (CRS).If the points are in Cartesian CRS (2D or 3D), then the units of the return distance will be the same as that of the point calculated using Pythagorean theorem.If the points are in WGS-84 CRS (3D), then the return distance is in meters.</p><p>&nbsp;</p>
+            <h4>3.2.1 2D points</h4><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                distance(point1, point2)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                WITH point({ x: 2.3, y: 4.5, crs: 'cartesian' }) AS p1, point({ x: 1.1, y: 5.4, crs: 'cartesian' }) AS p2
+                RETURN distance(p1,p2) AS dist</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the result, the distance between two 2D points in the CRS.</p><p>&nbsp;</p>
+            <img src="images/aggregation8.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <h4>3.2.2 3D points</h4><p>&nbsp;</p>
+            <h3>Syntax</h3><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                distance(point1, point2，point3)</pre></h4><p><p>&nbsp;</p>
+            <p>Step 1 - Open Neo4j browser app.<p>&nbsp;</p><p>&nbsp;</p>
+            <p>Step 2 - Type the command at the dollar prompt in the browser.<p>&nbsp;</p></p><p><p>&nbsp;</p>
+            <h4><pre class="result notranslate">
+                WITH point({ longitude: 12.78, latitude: 56.7, height: 100 }) AS p1, point({ latitude: 56.71, longitude: 12.79, height: 100 }) AS p2
+                RETURN distance(p1,p2) AS dist</pre></h4><p><p>&nbsp;</p>
+            <p>Step 3 - Get the result, the distance between two 3D points in the CRS.</p><p>&nbsp;</p>
+            <img src="images/aggregation9.png" width="600" height="300"><p>&nbsp;</p><p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <!--<div style="align-self: center; width: 85%; background-color: #A9D1FA"><br></div>-->
+            <h2 style="text-align: left; float: left; margin-left:10%;"><a href="BasicCRUD.html" style="color:#1e437a; text-decoration:none;">Previous</a></h2>
+            <h2 style="text-align: right; float: right; margin-right:15%;"><a href="#" style="color:#1e437a; text-decoration:none;">Next</a></h2>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+        </div>
+
+        <div id="footer"><h3><a href="aboutGroup.html">&#169;Group 5</a></h3></div>
+    </div>
+</div>
+</body>
+</html>
